@@ -1,0 +1,147 @@
+<!--
+	TEAM AEIOU PROJECT 3 - Fifteen Puzzle
+	by Austin Farmer, Zexi Guo, Oscar Martinez, and Ugonma Nnakwe
+	WEB PROGRAMMING FALL 2020
+
+	Extra Features Implemented:
+	1. Ability to slide multiple squares at once
+	2. Multiple backgrounds (with drag and drop image functionality)
+	3. End of game notification/Extra animation
+	4. Extra animation
+-->
+
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+	<head>
+
+		<meta charset="UTF-8">
+		<title>Project 4</title>
+		<link rel="stylesheet" href="style.css">
+		<script src="script.js"></script>
+
+	</head>
+
+	<body onload="setupBoard()" ondragover="dragOver(event)" ondragenter="dragEnter(event)">
+
+		<div id="file-drop" ondrop="dropImage(event)" ondragleave="dragLeave(event)"></div>
+		<div class="center">
+
+			<h1>Team AEIOU - Fifteen Puzzle</h1>
+
+			<!--background selection for puzzle using changeImage(file) function from fifteen.js-->
+			<div id="bg-selection">
+				Choose an image, or drag and drop your own!<br>
+				<img src="images/test.png" onclick="changeImage('images/test.png')" width="100px">
+				<img src="images/test2.png" onclick="changeImage('images/test2.png')" width="100px">
+				<img src="images/test3.png" onclick="changeImage('images/test3.png')" width="100px">
+				<img src="images/test4.png" onclick="changeImage('images/test4.png')" width="100px">
+				<img src="images/test5.png" onclick="changeImage('images/test5.png')" width="100px">
+				<br>
+			</div>
+
+		</div>
+
+		<div id="win-overlay" onclick="winScreenOff()">
+			<!--image made using https://3dtext2gif.com/-->
+			<img src='winner.gif'><br>
+			<!--image made with MS Paint-->
+			<img id="win-image" src="win.png"><br>
+			<!--image made using https://cooltext.com/Logo-Design-Burning-->
+			<img src="go_again.gif"><br>
+			Click anywhere to resume
+		</div>
+
+		<div id="board" ondrop="dropImage(event)">
+
+			<div class="board-row" id="row-0">
+
+				<div class="board-piece" id="piece-0">
+					<button onclick="clickPiece(0, 0)"></button>
+				</div>
+
+				<div class="board-piece" id="piece-1">
+					<button onclick="clickPiece(0, 1)"></button>
+				</div>
+
+				<div class="board-piece" id="piece-2">
+					<button onclick="clickPiece(0, 2)"></button>
+				</div>
+
+				<div class="board-piece" id="piece-3">
+					<button onclick="clickPiece(0, 3)"></button>
+				</div>
+
+			</div>
+
+			<div class="board-row" id="row-1">
+
+				<div class="board-piece" id="piece-4">
+					<button onclick="clickPiece(1, 0)"></button>
+				</div>
+
+				<div class="board-piece" id="piece-5">
+					<button onclick="clickPiece(1, 1)"></button>
+				</div>
+
+				<div class="board-piece" id="piece-6">
+					<button onclick="clickPiece(1, 2)"></button>
+				</div>
+
+				<div class="board-piece" id="piece-7">
+					<button onclick="clickPiece(1, 3)"></button>
+				</div>
+
+			</div>
+
+			<div class="board-row" id="row-2">
+
+				<div class="board-piece" id="piece-8">
+					<button onclick="clickPiece(2, 0)"></button>
+				</div>
+
+				<div class="board-piece" id="piece-9">
+					<button onclick="clickPiece(2, 1)"></button>
+				</div>
+
+				<div class="board-piece" id="piece-10">
+					<button onclick="clickPiece(2, 2)"></button>
+				</div>
+
+				<div class="board-piece" id="piece-11">
+					<button onclick="clickPiece(2, 3)"></button>
+				</div>
+
+			</div>
+
+			<div class="board-row" id="row-3">
+
+				<div class="board-piece" id="piece-12">
+					<button onclick="clickPiece(3, 0)"></button>
+				</div>
+
+				<div class="board-piece" id="piece-13">
+					<button onclick="clickPiece(3, 1)"></button>
+				</div>
+
+				<div class="board-piece" id="piece-14">
+					<button onclick="clickPiece(3, 2)"></button>
+				</div>
+
+				<div class="board-piece" id="piece-15">
+					<button onclick="clickPiece(3, 3)" disabled></button>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="center">
+			<input type="button" value="Shuffle Board" onclick="shuffleButton()" />
+			<div id="winner"></div>
+		</div>
+
+	</body>
+
+</html>

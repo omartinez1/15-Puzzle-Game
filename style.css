@@ -1,0 +1,221 @@
+:root {
+	--board-size: 4;
+	--board-spacing: 1px;
+	--piece-size: 150px;
+	--piece-border: 2px;
+	--image-file: url("images/test.png");
+	/* DO NOT CHANGE THE FORMULAS BELOW */
+	--image-size: calc(var(--piece-size) * var(--board-size) + var(--board-spacing) * (var(--board-size) - 1) - var(--piece-border) * 2);
+	--image-offset: calc(var(--piece-size) + var(--board-spacing));
+}
+
+body {
+	margin: 0;
+	background-color: aliceblue;
+	font-family: 'Comic Sans MS';
+	position: relative;
+}
+
+
+button {
+	float: left;
+	background: transparent;
+	border: var(--piece-border) solid black;
+	width: var(--piece-size);
+	height: var(--piece-size);
+	cursor: pointer;
+	text-align: center;
+	margin: auto;
+	font-size: 32pt;
+	color: black;
+}
+
+button:disabled:hover {
+	cursor: default;
+	color: black;
+	text-decoration: none;
+	border: var(--piece-border) solid black;
+}
+
+button:hover {
+	box-shadow: 0 0 8px 8px red;
+	position: absolute;
+	color:  #006600;
+	text-decoration: underline;
+	border: var(--piece-border) solid red;
+}
+
+button:hover:disabled {
+	box-shadow: none;
+}
+
+.center{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+input{
+	font-family: 'Comic Sans MS';
+	height: 40px;
+	width: 120px;
+	background-color: rgb(125, 240, 255);
+}
+input:hover{
+	background-color: rgb(108, 209, 223);
+}
+#bg-selection{
+
+	font-size: 20pt;
+	background-color: rgb(151, 253, 253);
+	width: 600px;
+	margin: auto;
+}
+/* start code referenced from w3schools
+https://www.w3schools.com/howto/howto_css_overlay.asp
+*/
+#win-overlay {
+	position: fixed; /* Sit on top of the page content */
+	display: none; /* Hidden by default */
+	width: 100%; /* Full width (cover the whole page) */
+	height: 100%; /* Full height (cover the whole page) */
+	text-align: center;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+	z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+	cursor: pointer; /* Add a pointer on hover */
+	color: white;
+	font-size: 20pt;
+}
+/* end code referenced from w3schools
+https://www.w3schools.com/howto/howto_css_overlay.asp
+*/
+#win-image{
+	animation: shake 0.5s;
+	animation-iteration-count: infinite;  
+}
+@keyframes shake {
+	0% { transform: translate(1px, 1px) rotate(0deg); }
+	10% { transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { transform: translate(-3px, 0px) rotate(1deg); }
+	30% { transform: translate(3px, 2px) rotate(0deg); }
+	40% { transform: translate(1px, -1px) rotate(1deg); }
+	50% { transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { transform: translate(-3px, 1px) rotate(0deg); }
+	70% { transform: translate(3px, 1px) rotate(-1deg); }
+	80% { transform: translate(-1px, -1px) rotate(1deg); }
+	90% { transform: translate(1px, 2px) rotate(0deg); }
+	100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+#board {
+	display: table;
+	border-spacing: var(--board-spacing);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.board-row {
+	display: table-row;
+	width: 100%;
+}
+
+.board-piece {
+	display: table-cell;
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	background-image: var(--image-file);
+	background-size: calc(var(--image-size));
+}
+
+#file-drop {
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+}
+
+/* DO NOT CROSS */
+/* PLEASE DON'T MODIFY ANYTHING BELOW */
+
+#piece-0{
+	background-position-x: var(--piece-border);
+	background-position-y: var(--piece-border);
+}
+
+#piece-1{
+	background-position-x: calc(var(--image-offset) * -1 + var(--piece-border));
+	background-position-y: var(--piece-border);
+}
+
+#piece-2{
+	background-position-x: calc(var(--image-offset) * -2 + var(--piece-border));
+	background-position-y: var(--piece-border); 
+}
+
+#piece-3{
+	background-position-x: calc(var(--image-offset) * -3 + var(--piece-border));
+	background-position-y: var(--piece-border);
+}
+
+#piece-4{
+	background-position-x: var(--piece-border);
+	background-position-y: calc(var(--image-offset) * -1 + var(--piece-border));
+}
+
+#piece-5{
+	background-position-x: calc(var(--image-offset) * -1 + var(--piece-border));
+	background-position-y: calc(var(--image-offset) * -1 + var(--piece-border));
+}
+
+#piece-6{
+	background-position-x: calc(var(--image-offset) * -2 + var(--piece-border));
+	background-position-y: calc(var(--image-offset) * -1 + var(--piece-border));
+}
+
+#piece-7{
+	background-position-x: calc(var(--image-offset) * -3 + var(--piece-border));
+	background-position-y: calc(var(--image-offset) * -1 + var(--piece-border));
+}
+
+#piece-8{
+	background-position-x: var(--piece-border);
+	background-position-y: calc(var(--image-offset) * -2 + var(--piece-border));
+}
+
+#piece-9{
+	background-position-x: calc(var(--image-offset) * -1 + var(--piece-border));
+	background-position-y: calc(var(--image-offset) * -2 + var(--piece-border));
+}
+
+#piece-10{
+	background-position-x: calc(var(--image-offset) * -2 + var(--piece-border));
+	background-position-y: calc(var(--image-offset) * -2 + var(--piece-border));
+}
+
+#piece-11{
+	background-position-x: calc(var(--image-offset) * -3 + var(--piece-border));
+	background-position-y: calc(var(--image-offset) * -2 + var(--piece-border));
+}
+
+#piece-12{
+	background-position-x: var(--piece-border);
+	background-position-y: calc(var(--image-offset) * -3 + var(--piece-border));
+}
+
+#piece-13{
+	background-position-x: calc(var(--image-offset) * -1 + var(--piece-border));
+	background-position-y: calc(var(--image-offset) * -3 + var(--piece-border));
+}
+
+#piece-14{
+	background-position-x: calc(var(--image-offset) * -2 + var(--piece-border));
+	background-position-y: calc(var(--image-offset) * -3 + var(--piece-border));
+}
+
+#piece-15{
+	background-image: none;
+}
